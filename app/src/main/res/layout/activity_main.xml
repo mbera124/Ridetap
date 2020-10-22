@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/car"
+    tools:context=".SignIn">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="150dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            app:cardCornerRadius="50dp"
+           >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp">
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/keys"
+                    android:layout_marginStart="140dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginTop="0dp"
+                    android:id="@+id/imgkey" />
+
+                <EditText
+                    android:id="@+id/etemail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:hint="Enter Your Email Address"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/Black"
+                    android:textColorHint="@color/Black"
+                    android:layout_below="@+id/imgkey"/>
+
+                <EditText
+                    android:id="@+id/etpassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/etemail"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:hint="Enter Your Password"
+                    android:inputType="textPassword"
+                    android:textColor="@color/Black"
+                    android:textColorHint="@color/Black" />
+
+                <Button
+                    android:id="@+id/btnsignin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/etpassword"
+                    android:layout_marginTop="16dp"
+                    android:text="Sign In" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/btnsignin"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:clickable="true"
+                    android:text="Don't have an account?Sign Up"
+                    android:textColor="@color/Black"
+                    android:textSize="20sp"
+                    android:id="@+id/tvsignup"/>
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

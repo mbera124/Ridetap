@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "771965191510",
+    "firebase_url": "https://dictionary-96874.firebaseio.com",
+    "project_id": "dictionary-96874",
+    "storage_bucket": "dictionary-96874.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:771965191510:android:1e609e68592e7a30b902f7",
+        "android_client_info": {
+          "package_name": "com.example.ridetap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "771965191510-3f8ttnl07h4eoff2117tudbeagcct9nc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ridetap",
+            "certificate_hash": "f43dec535d53a3e53289f714f22c30a84a143175"
+          }
+        },
+        {
+          "client_id": "771965191510-7gfiu6eshmucmtlq9u6in75neveuu4e1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0wm4J-2QccAwaQpfgdFmj1_U24o48i6g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "771965191510-7gfiu6eshmucmtlq9u6in75neveuu4e1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
