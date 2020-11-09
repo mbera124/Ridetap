@@ -7,6 +7,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.ProgressDialog;
 import android.app.SearchManager;
@@ -15,6 +17,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -44,6 +47,7 @@ private FloatingActionButton fabaddcar;
     DatabaseReference databaseReference;
     ProgressDialog mProgressDialog;
     RecyclerView recycler_cars;
+    SwipeRefreshLayout swipeRefreshLayout;
     RecyclerView.LayoutManager layoutManager;
     private AddcarAdapter addcarAdapter;
     private List<Cars> carsList = new ArrayList<>();
@@ -62,45 +66,87 @@ private FloatingActionButton fabaddcar;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.app_name);
 
-        tvsignin=findViewById(R.id.tvsignin);
-        tvsignup=findViewById(R.id.tvsignup);
+//        tvsignin=findViewById(R.id.tvsignin);
+//        tvsignup=findViewById(R.id.tvsignup);
+        swipeRefreshLayout=findViewById(R.id.swiperefresh);
         fabaddcar=findViewById(R.id.fabaddcar);
-//        auth = FirebaseAuth.getInstance();
-//        if (auth.getCurrentUser().getEmail().){
+        firebaseAuth = FirebaseAuth.getInstance();
+//        if (firebaseAuth.getCurrentUser().getEmail().equals("josephmbera124@gmail.com")){
+//            fabaddcar.setVisibility(View.VISIBLE);
+//        }else {
 //            fabaddcar.setVisibility(View.INVISIBLE);
 //        }
-//        if(carsList.size() >0){
-//            carsList.clear();
-//        }
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+
+            @Override
+
+            public void onRefresh() {
+
+                // Your code here
+
+                Toast.makeText(getApplicationContext(), "Refreshing!", Toast.LENGTH_SHORT).show();
+
+                // To keep animation for 4 seconds
+
+                new Handler().postDelayed(new Runnable() {
+
+                    @Override public void run() {
+
+                        // Stop animation (This will be after 3 seconds)
+
+                        swipeRefreshLayout.setRefreshing(false);
+
+                    }
+
+                }, 4000); // Delay in millis
+
+            }
+
+        });
+        swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
+
+                android.R.color.holo_green_light,
+
+                android.R.color.holo_orange_light,
+
+                android.R.color.holo_red_light);
+
+
+
+
+
+        if(carsList.size() >0){
+            carsList.clear();
+        }
         database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference("Addcar");
         firebaseAuth = FirebaseAuth.getInstance();
 
 
-        if(firebaseAuth.getCurrentUser().getEmail().equals("")){
-             fabaddcar.setVisibility(View.GONE);
-        }else {
-            fabaddcar.setVisibility(View.VISIBLE);
-        }
+//        if(firebaseAuth.getCurrentUser().getEmail().equals("josephmbera124@gmail.com")){
+//             fabaddcar.setVisibility(View.GONE);
+//        }else {
+//            fabaddcar.setVisibility(View.VISIBLE);
+//        }
         mAuthListener = firebaseAuth -> {
             FirebaseAuth user = FirebaseAuth.getInstance();
-            if(!user.getCurrentUser().getEmail().equals("")){
-               // fabaddcar.setVisibility(View.VISIBLE);
+            if(!user.getCurrentUser().getEmail().equals("josephmbera124@gmail.com")){
+                fabaddcar.setVisibility(View.VISIBLE);
             }else {
-                //fabaddcar.setVisibility(View.INVISIBLE);
+                fabaddcar.setVisibility(View.INVISIBLE);
             }
             if(carsList.size() >0){
             carsList.clear();
         }
         };
 
-        tvsignin.setOnClickListener(v -> {
-            startActivity(new Intent(Home.this, SignIn.class));
-
-        });
-        tvsignup.setOnClickListener(v -> {
-            startActivity(new Intent(Home.this, SignUp.class));
-                   });
+//        tvsignin.setOnClickListener(v -> {
+//            startActivity(new Intent(Home.this, SignIn.class));
+//
+//        });
+//        tvsignup.setOnClickListener(v -> {
+//            startActivity(new Intent(Home.this, SignUp.class));
+//                   });
         fabaddcar.setOnClickListener(v -> {
             startActivity(new Intent(Home.this, AddCar.class));
             finish();
@@ -114,8 +160,10 @@ private FloatingActionButton fabaddcar;
         recycler_cars= findViewById(R.id.recycler_cars);
         addcarAdapter = new AddcarAdapter(this, carsList);
         recycler_cars.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
-        recycler_cars.setLayoutManager(layoutManager);
+//        layoutManager = new LinearLayoutManager(this);
+        recycler_cars.setNestedScrollingEnabled(false);
+        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        recycler_cars.setLayoutManager(staggeredGridLayoutManager);
         recycler_cars.setAdapter(addcarAdapter);
         loadCars();
 
@@ -206,9 +254,16 @@ private FloatingActionButton fabaddcar;
         if (id == R.id.action_search) {
             return true;
         }
+        if (id == R.id.action_refresh) {
+
+            startActivity(new Intent(Home.this, SignIn.class));
+            finish();
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
+
 
     @Override
     public void onBackPressed() {

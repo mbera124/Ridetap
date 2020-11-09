@@ -12,6 +12,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {
@@ -59,6 +60,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore:21.4.2'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.github.bumptech.glide:glide:4.3.1'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
 
     // volley http library
     implementation 'com.android.volley:volley:1.0.0'

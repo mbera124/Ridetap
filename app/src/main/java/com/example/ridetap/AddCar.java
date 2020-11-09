@@ -149,7 +149,7 @@ public class AddCar extends AppCompatActivity {
                         public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
                             double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot
                                     .getTotalByteCount());
-                            progressDialog.setMessage("Uploaded " + ((int) progress) + "%...");
+                            progressDialog.setMessage("Uploading " + ((int) progress) + "%...");
                         }
                     });
         }

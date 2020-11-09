@@ -32,7 +32,12 @@ private ImageView imgkey;
         tvsignup=findViewById(R.id.tvsignup);
         imgkey=findViewById(R.id.imgkey);
         auth = FirebaseAuth.getInstance();
+        if (auth.getCurrentUser() != null) {
+            startActivity(new Intent(SignIn.this, Home.class));
+            Toast.makeText(SignIn.this, "Welcome back " + " " + auth.getCurrentUser() + " ", Toast.LENGTH_LONG).show();
 
+            finish();
+        }
         tvsignup.setOnClickListener(v -> {
             startActivity(new Intent(SignIn.this, SignUp.class));
             finish();

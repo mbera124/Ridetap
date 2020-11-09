@@ -12,39 +12,46 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"
         app:popupTheme="@style/Theme.AppCompat.Light.DarkActionBar"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:weightSum="2"
-        android:id="@+id/laytextview"
-        android:layout_below="@+id/toolbar">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_weight="1"
-        android:layout_gravity="right">
-        <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SIGN IN"
-        android:textColor="@color/Black"
-        android:id="@+id/tvsignin"
-        android:layout_weight="2"
-        android:textSize="20sp"
-            android:clickable="true"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="SIGN UP"
-            android:textColor="@color/Black"
-            android:id="@+id/tvsignup"
-            android:textSize="20sp"
-            android:clickable="true"/>
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical"-->
+<!--        android:weightSum="2"-->
+<!--        android:id="@+id/laytextview"-->
+<!--        android:layout_below="@+id/toolbar">-->
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_weight="1"-->
+<!--        android:layout_gravity="right">-->
+<!--        <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="SIGN IN"-->
+<!--        android:textColor="@color/Black"-->
+<!--        android:id="@+id/tvsignin"-->
+<!--        android:layout_weight="2"-->
+<!--        android:textSize="20sp"-->
+<!--            android:clickable="true"/>-->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="SIGN UP"-->
+<!--            android:textColor="@color/Black"-->
+<!--            android:id="@+id/tvsignup"-->
+<!--            android:textSize="20sp"-->
+<!--            android:clickable="true"/>-->
 
-    </LinearLayout>
-    </LinearLayout>
+<!--    </LinearLayout>-->
+<!--    </LinearLayout>-->
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/swiperefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="60dp">
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_cars"
         android:layout_width="match_parent"
@@ -53,11 +60,11 @@
         android:layout_below="@+id/laytextview"
         android:layout_marginTop="0dp"
         />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="100dp"
         android:id="@+id/fabaddcar"
-        android:visibility="invisible"
         android:layout_alignParentBottom="true"
         android:src="@drawable/ic_add_circle_outline_black_24dp"
         android:layout_alignParentRight="true"/>
